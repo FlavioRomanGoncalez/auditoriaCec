@@ -9,12 +9,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.delFuncionario = exports.putFuncionario = exports.createFuncionario = exports.getFuncionarios = void 0;
+exports.delFuncionario = exports.putFuncionario = exports.createFuncionario = exports.getFuncionarioByID = exports.getFuncionarios = void 0;
 const funcionario_entitie_1 = require("../entities/funcionario.entitie");
+const db_1 = require("../database/db");
+const repo = db_1.AppDataSource.getRepository(funcionario_entitie_1.Funcionario);
 const getFuncionarios = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const funcionarios = yield funcionario_entitie_1.Funcionario.find();
-        res.status(200).json(funcionarios);
+        const funcionarios = yield repo.find({ where: { estado: true } });
+        return res.status(200).json(funcionarios);
+    }
+    catch (error) {
+        console.log(error);
+        if (error instanceof Error) {
+            return res.status(500).json({ message: error.message });
+        }
+    }
+});
+exports.getFuncionarios = getFuncionarios;
+const getFuncionarioByID = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        // const { id } = req.params;
+        const funcionario = yield funcionario_entitie_1.Funcionario.findOneBy({ id: parseInt(req.params.id) });
+        if (!funcionario)
+            return res.status(404).json({ message: 'Funcionario No Existe' });
+        res.status(200).json(funcionario);
     }
     catch (error) {
         console.log(error);
@@ -23,7 +41,7 @@ const getFuncionarios = (req, res) => __awaiter(void 0, void 0, void 0, function
         }
     }
 });
-exports.getFuncionarios = getFuncionarios;
+exports.getFuncionarioByID = getFuncionarioByID;
 const createFuncionario = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const funcionario = yield funcionario_entitie_1.Funcionario.save(req.body);
