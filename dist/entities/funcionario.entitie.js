@@ -40,7 +40,7 @@ __decorate([
 ], Funcionario.prototype, "linea", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], Funcionario.prototype, "serial", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
@@ -70,6 +70,10 @@ __decorate([
     (0, typeorm_1.Column)("decimal", { precision: 15, scale: 2 }),
     __metadata("design:type", String)
 ], Funcionario.prototype, "precio", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Boolean)
+], Funcionario.prototype, "estado", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

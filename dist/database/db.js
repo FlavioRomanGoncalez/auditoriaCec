@@ -8,10 +8,10 @@ exports.AppDataSource = new typeorm_1.DataSource({
     //host: '154.49.247.52',
     host: '193.203.175.12',
     password: '@Exo2023',
-    username: 'u262284440_auditoria_cel',
+    username: 'u262284440_auditorio_cel',
     database: 'u262284440_auditoria_cel',
     port: 3306,
     entities: [funcionario_entitie_1.Funcionario],
     logging: true,
-    synchronize: false
+    synchronize: true
 });

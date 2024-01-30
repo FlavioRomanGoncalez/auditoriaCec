@@ -5,4 +5,6 @@ const funcionario_controller_1 = require("../controller/funcionario.controller")
 const router = (0, express_1.Router)();
 router.get('/funcionariosAll', funcionario_controller_1.getFuncionarios);
 router.post('/funcionarios', funcionario_controller_1.createFuncionario);
+router.put('/funcionarioUpdate/id', funcionario_controller_1.putFuncionario);
+router.put('/funcionarioDel/id', funcionario_controller_1.delFuncionario);
 exports.default = router;
