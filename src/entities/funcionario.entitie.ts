@@ -22,7 +22,7 @@ export class Funcionario extends BaseEntity {
   linea: number
   
   @Column()
-  serial: number
+  serial: string
   
   @Column()
   modelo: string

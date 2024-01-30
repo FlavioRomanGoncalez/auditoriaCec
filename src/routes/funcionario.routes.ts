@@ -1,10 +1,9 @@
 import { Router } from 'express';
-import { getClients, getClientCi } from '../controller/funcionario.controller';
-
+import { getFuncionarios, createFuncionario } from '../controller/funcionario.controller';
 
 const router = Router();
 
-router.get('/clientsGetAll', getClients);
-router.get('/cedulaGetOne/:cedula', getClientCi);
+router.get('/funcionariosAll', getFuncionarios);
+router.post('/funcionarios', createFuncionario);
 
 export default router;
