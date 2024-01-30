@@ -28,7 +28,7 @@ export class Funcionario extends BaseEntity {
 
   @Column()
   linea_empresa: number
-  
+
   @Column()
   linea_personal: number
 
@@ -56,7 +56,7 @@ export class Funcionario extends BaseEntity {
   @Column("decimal", { precision: 15, scale: 2 })
   precio_usd: number
 
-  @Column()
+  @Column({ default: true })
   estado: boolean
 
   @CreateDateColumn()

@@ -83,7 +83,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Funcionario.prototype, "precio_usd", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ default: true }),
     __metadata("design:type", Boolean)
 ], Funcionario.prototype, "estado", void 0);
 __decorate([
