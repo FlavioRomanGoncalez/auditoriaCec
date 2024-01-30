@@ -19,9 +19,13 @@ __decorate([
     __metadata("design:type", Number)
 ], Funcionario.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], Funcionario.prototype, "cantidad", void 0);
+    (0, typeorm_1.Column)({
+        type: "enum",
+        enum: ["Mobile Zone", "GenZ", "Goon"],
+        default: "GenZ"
+    }),
+    __metadata("design:type", String)
+], Funcionario.prototype, "empresa", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
@@ -33,11 +37,19 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)("decimal", { precision: 15, scale: 2 }),
     __metadata("design:type", Number)
-], Funcionario.prototype, "monto", void 0);
+], Funcionario.prototype, "monto_empresa", void 0);
+__decorate([
+    (0, typeorm_1.Column)("decimal", { precision: 15, scale: 2 }),
+    __metadata("design:type", Number)
+], Funcionario.prototype, "monto_particular", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
-], Funcionario.prototype, "linea", void 0);
+], Funcionario.prototype, "linea_empresa", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], Funcionario.prototype, "linea_personal", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
@@ -68,8 +80,8 @@ __decorate([
 ], Funcionario.prototype, "obs_verificacion", void 0);
 __decorate([
     (0, typeorm_1.Column)("decimal", { precision: 15, scale: 2 }),
-    __metadata("design:type", String)
-], Funcionario.prototype, "precio", void 0);
+    __metadata("design:type", Number)
+], Funcionario.prototype, "precio_usd", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Boolean)

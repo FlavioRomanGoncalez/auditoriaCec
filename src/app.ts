@@ -1,7 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import clientRoutes from './routes/funcionario.routes';
+import funcionarioRoutes from './routes/funcionario.routes';
 
 const app = express();
 
@@ -9,6 +9,6 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 
-app.use(clientRoutes);
+app.use(funcionarioRoutes);
 
 export default app;
