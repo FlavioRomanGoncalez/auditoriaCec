@@ -13,6 +13,21 @@ export const getFuncionarios = async (req: Request, res: Response) => {
   }
 };
 
+export const getFuncionarioByID = async (req: Request, res: Response) => {
+  try {
+    // const { id } = req.params;
+    const funcionario = await Funcionario.findOneBy({ id: parseInt(req.params.id) });
+    if (!funcionario) return res.status(404).json({ message: 'Funcionario No Existe' });
+
+    res.status(200).json(funcionario);
+  } catch (error) {
+    console.log(error);
+    if (error instanceof Error) {
+      res.status(500).json({ message: error.message })
+    }
+  }
+};
+
 export const createFuncionario = async (req: Request, res: Response) => {
   try {
     const funcionario = await Funcionario.save(req.body);
