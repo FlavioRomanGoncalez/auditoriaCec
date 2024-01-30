@@ -45,6 +45,9 @@ export class Funcionario extends BaseEntity {
   @Column("decimal", { precision: 15, scale: 2 })
   precio: string
 
+  @Column()
+  estado: boolean
+
   @CreateDateColumn()
   createdAt: Date;
 
