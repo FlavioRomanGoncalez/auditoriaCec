@@ -20,26 +20,26 @@ export const getFuncionarios = async (req: Request, res: Response) => {
 export const getFuncionarioByID = async (req: Request, res: Response) => {
   try {
     // const { id } = req.params;
-    const funcionario = await Funcionario.findOneBy({ id: parseInt(req.params.id) });
+    const funcionario = await repo.findOneBy({ id: parseInt(req.params.id) });
     if (!funcionario) return res.status(404).json({ message: 'Funcionario No Existe' });
 
-    res.status(200).json(funcionario);
+    return res.status(200).json(funcionario);
   } catch (error) {
     console.log(error);
     if (error instanceof Error) {
-      res.status(500).json({ message: error.message })
+      return res.status(500).json({ message: error.message })
     }
   }
 };
 
 export const createFuncionario = async (req: Request, res: Response) => {
   try {
-    const funcionario = await Funcionario.save(req.body);
-    res.status(200).json(funcionario);
+    const funcionario = await repo.save(req.body);
+    return res.status(200).json(funcionario);
   } catch (error) {
     console.log(error);
     if (error instanceof Error) {
-      res.status(500).json({ message: error.message })
+      return res.status(500).json({ message: error.message })
     }
   }
 };
@@ -51,17 +51,17 @@ export const putFuncionario = async (req: Request, res: Response) => {
     //    const { name, rs_wallet, us_wallet } = req.body;
     const { id } = req.params;
 
-    const funcionario = await Funcionario.findOneBy({ id: parseInt(req.params.id) });
+    const funcionario = await repo.findOneBy({ id: parseInt(req.params.id) });
     if (!funcionario) return res.status(404).json({ message: 'Funcionario No Existe' });
 
-    await Funcionario.update({ id: parseInt(id) }, req.body);
+    await repo.update({ id: parseInt(id) }, req.body);
 
-    res.status(204).json(funcionario);
+   return res.status(204).json(funcionario);
 
   } catch (error) {
     console.log(error);
     if (error instanceof Error) {
-      res.status(500).json({ message: error.message })
+      return res.status(500).json({ message: error.message })
     }
   }
 };

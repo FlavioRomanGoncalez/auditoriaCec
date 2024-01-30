@@ -29,28 +29,28 @@ exports.getFuncionarios = getFuncionarios;
 const getFuncionarioByID = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // const { id } = req.params;
-        const funcionario = yield funcionario_entitie_1.Funcionario.findOneBy({ id: parseInt(req.params.id) });
+        const funcionario = yield repo.findOneBy({ id: parseInt(req.params.id) });
         if (!funcionario)
             return res.status(404).json({ message: 'Funcionario No Existe' });
-        res.status(200).json(funcionario);
+        return res.status(200).json(funcionario);
     }
     catch (error) {
         console.log(error);
         if (error instanceof Error) {
-            res.status(500).json({ message: error.message });
+            return res.status(500).json({ message: error.message });
         }
     }
 });
 exports.getFuncionarioByID = getFuncionarioByID;
 const createFuncionario = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const funcionario = yield funcionario_entitie_1.Funcionario.save(req.body);
-        res.status(200).json(funcionario);
+        const funcionario = yield repo.save(req.body);
+        return res.status(200).json(funcionario);
     }
     catch (error) {
         console.log(error);
         if (error instanceof Error) {
-            res.status(500).json({ message: error.message });
+            return res.status(500).json({ message: error.message });
         }
     }
 });
@@ -59,16 +59,16 @@ const putFuncionario = (req, res) => __awaiter(void 0, void 0, void 0, function*
     try {
         //    const { name, rs_wallet, us_wallet } = req.body;
         const { id } = req.params;
-        const funcionario = yield funcionario_entitie_1.Funcionario.findOneBy({ id: parseInt(req.params.id) });
+        const funcionario = yield repo.findOneBy({ id: parseInt(req.params.id) });
         if (!funcionario)
             return res.status(404).json({ message: 'Funcionario No Existe' });
-        yield funcionario_entitie_1.Funcionario.update({ id: parseInt(id) }, req.body);
-        res.status(204).json(funcionario);
+        yield repo.update({ id: parseInt(id) }, req.body);
+        return res.status(204).json(funcionario);
     }
     catch (error) {
         console.log(error);
         if (error instanceof Error) {
-            res.status(500).json({ message: error.message });
+            return res.status(500).json({ message: error.message });
         }
     }
 });
