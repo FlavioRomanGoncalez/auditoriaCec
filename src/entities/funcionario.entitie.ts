@@ -9,7 +9,7 @@ export class Funcionario extends BaseEntity {
 
   @Column({
     type: "enum",
-    enum: ["Mobile Zone", "GenZ", "Goon"],
+    enum: ["Bm2", "Mobile Zone", "GenZ", "Life Green", "New Zone"],
     default: "GenZ"
   })
   empresa: string
